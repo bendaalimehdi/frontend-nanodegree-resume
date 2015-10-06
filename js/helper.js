@@ -1,9 +1,6 @@
-/*
-
+﻿/*
 This file contains all of the code running in the background that makes resumeBuilder.js possible. We call these helper functions because they support your code in this course.
-
 Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes to it until you start experimenting with inserting a Google Map in Problem Set 3.
-
 Cameron Pittman
 */
 
@@ -18,7 +15,7 @@ var HTMLheaderRole = '<span>%data%</span><hr/>';
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
 var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
 var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
-var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
+var HTMLfacebook = '<li class="flex-item"><span class="orange-text">facebook</span><span class="white-text">%data%</span></li>';
 var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
 var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
 var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
@@ -136,9 +133,9 @@ function initializeMap() {
 
     // iterates through work locations and appends each location to
     // the locations array
-    for (var job in work.jobs) {
-      locations.push(work.jobs[job].location);
-    }
+    //for (var job in work.jobs) {
+    //  locations.push(work.jobs[job].location);
+    //}
 
     return locations;
   }
@@ -173,6 +170,7 @@ function initializeMap() {
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
+	  infoWindow.open(map, marker);
     });
 
     // this is where the pin actually gets added to the map.
@@ -235,11 +233,11 @@ Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   //Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+  map.fitBounds(mapBounds);
+});
